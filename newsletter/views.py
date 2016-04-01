@@ -2,9 +2,13 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    title = "My Title"
+    title = "My Title" 
+    if request.user.is_authenticated():
+        title = "My Title %s" %(request.user)
+
+    # add a form 
     context = {
-        "template_title": title,
+        "title": title,
     }
     return  render(request,"home.html", context)
 
