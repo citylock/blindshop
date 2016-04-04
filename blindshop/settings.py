@@ -121,3 +121,11 @@ STATIC_ROOT = '/var/www/html/blindshop/staticfiles'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# uploaded files by users
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/var/www/html/blindshop/mediafiles' 
+
+
+
+
