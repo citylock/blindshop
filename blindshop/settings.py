@@ -25,7 +25,7 @@ SECRET_KEY = 'u6f-($m)%tg0=@2c*@oo(=5c3eew53(3s)fpk_j+m(jl5e%fy4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Email HOST setting
 EMAIL_HOST = 'smtp.gmail.com'
@@ -125,7 +125,4 @@ STATICFILES_DIRS = [
 # uploaded files by users
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/html/blindshop/mediafiles' 
-
-
-
 
