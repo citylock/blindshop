@@ -45,12 +45,16 @@ https://accounts.google.com/displayunlockcaptcha
 # Application definition
 
 INSTALLED_APPS = (
+    # django app 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps 
+    'crispy_forms', 
+    # my apps 
     'newsletter'
 )
 
@@ -126,3 +130,4 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/html/blindshop/mediafiles' 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
