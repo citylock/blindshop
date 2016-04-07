@@ -20,19 +20,22 @@
   <body>
   {% include 'navbar.html' %}
 
-    <div class="container">
-    {% block jumbotron %}
-    <!-- Main component for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        {% block jumbotron_content %}
-        {% endblock %}
-    </div>
-    {% endblock %}
+	    <div class="container-fluid">
+	    {% block jumbotron %}
+	    <!-- Main component for a primary marketing message or call to action -->
+	    <div class="jumbotron">
+		{% block jumbotron_content %}
 
-    {% block content %}
-    {% endblock %}
-	
-    </div> <!-- /container -->
+		{% endblock %}
+	    </div>
+	    {% endblock %}
+
+	    <div class='col-sm-6'>		
+	    {% block content %}
+	    {% endblock %}
+	    </div>
+
+	    </div> <!-- /container -->
 
     {% include 'javascript.html' %}
 

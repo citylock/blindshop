@@ -39,7 +39,7 @@ def home(request):
         }
 
 
-    return  render(request,"example_fluid.html", context)
+    return  render(request,"home.html", context)
 
 
 def contact(request):
