@@ -15,12 +15,18 @@
 
     {% include 'head_css.html' %}
 
+	<style>
+	{% block style %}
+
+	{% endblock %}
+	</style>
+
   </head>
 
   <body>
   {% include 'navbar.html' %}
 
-	    <div class="container-fluid">
+	    <div class="container">
 	    {% block jumbotron %}
 	    <!-- Main component for a primary marketing message or call to action -->
 	    <div class="jumbotron">
