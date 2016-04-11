@@ -5,13 +5,23 @@
 
 <style>
 {% block style %}
+.navbar-static-top {
+    margin-bottom: 0px !important;
+}
+
+.jumbotron {
+	background-color:#2C2F80;
+	color:#FFF;
+}
 
 {% endblock %}
 </style>
 
 
 {% block jumbotron %}
+
 <div class="jumbotron">
+	<div class="container">
 	<div class="row">
 		<div class='col-sm-6'>
 		<h1>Try Django 1.8</h1>
@@ -25,7 +35,9 @@
 		
 		</div>
 	</div>
+	</div>
 </div>
+
 {% endblock %}
 
 {% block content %}
