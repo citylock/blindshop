@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block head_title %}Welcome | {{ block.super }}{% endblock %}
 
@@ -24,14 +25,15 @@
 	<div class="container">
 	<div class="row">
 		<div class='col-sm-6'>
-		<h1>Try Django 1.8</h1>
-		<p>The MVP Landing project is designed to get your project started. The goal is to help you launch as soon as possible with the least amount of investment using time or money. Join Us today.</p>
+		<h1>Best Blinds</h1>
+		<p>We believe we offer the best value blinds in Australia. We don't have sales consultants who try to upsell and over charge you for your blinds. All our prices are available online, eliminating the need for sales commissions. Join Us today.</p>
 		<p>
 		  <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
 		</p>
 		</div>
 		
-		<div class='col-sm-6'style="background-color:black;height:300px;">
+		<div class='col-sm-6'>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/t4--_JeuLi8" frameborder="0" allowfullscreen></iframe>
 		
 		</div>
 	</div>
@@ -56,15 +58,18 @@
   </div>
 
   <div class="col-md-3">
-  <p class="lead text-align-center">Built with Django &amp; Bootstrap</p>
+	  	<p class="lead text-align-center">Vertical &amp; Bootstrap</p>
+	  	<img src="{% static 'img/blinds-vertical-01.jpg' %}" class='img-responsive' />
   </div>
 
   <div class="col-md-3">
-  <p class="lead text-align-center">Created for starters of all kinds.</p>
+	  <p class="lead text-align-center">Roller</p>
+	  <img src="{% static 'img/blinds-roller-01.jpg' %}" class='img-responsive' />
   </div>
 
   <div class="col-md-3">
-  <p class="lead text-align-center">Always Open Sourse</p>
+	  <p class="lead text-align-center">Roman</p>
+	  <img src="{% static 'img/blinds-roman-01.jpg' %}" class='img-responsive' />
   </div>
 
 
