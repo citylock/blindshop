@@ -20,6 +20,7 @@
 
 
 {% block jumbotron %}
+{% if not request.user.is_authenticated %}
 
 <div class="jumbotron">
 	<div class="container">
@@ -40,9 +41,19 @@
 	</div>
 </div>
 
+{% endif %}
 {% endblock %}
 
+
+
+
 {% block content %}
+
+{% if request.user.is_authenticated %}
+<h1>You are logged in!!!</h1>
+{{ queryset }}
+
+{% else %}
 <div class="row">
   <div class="col-md-3 pull-right">
 		
@@ -58,7 +69,7 @@
   </div>
 
   <div class="col-md-3">
-	  	<p class="lead text-align-center">Vertical &amp; Bootstrap</p>
+	  	<p class="lead text-align-center">Vertical</p>
 	  	<img src="{% static 'img/blinds-vertical-01.jpg' %}" class='img-responsive' />
   </div>
 
@@ -80,4 +91,5 @@
 
 
 </div>
+{% endif %}
 {% endblock %}
