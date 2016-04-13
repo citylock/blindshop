@@ -25,6 +25,10 @@ SECRET_KEY = 'u6f-($m)%tg0=@2c*@oo(=5c3eew53(3s)fpk_j+m(jl5e%fy4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ADMINS = (
+    ("Brian", "citylock77@gmail.com"),
+    )
+
 ALLOWED_HOSTS = ['*']
 
 # Email HOST setting
@@ -97,7 +101,6 @@ WSGI_APPLICATION = 'blindshop.wsgi.application'
 print DEBUG
 
 if not DEBUG: 
-    print 'Use MySQL database'
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -109,7 +112,6 @@ if not DEBUG:
         }
     }
 else: 
-    print 'Use sqlite3 database'
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
