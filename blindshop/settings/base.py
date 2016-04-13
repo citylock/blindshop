@@ -94,13 +94,28 @@ WSGI_APPLICATION = 'blindshop.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+print DEBUG
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if not DEBUG: 
+    print 'Use MySQL database'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'noble',
+            'USER': 'noble_admin',
+            'PASSWORD': 'syd1q2w',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
     }
-}
+else: 
+    print 'Use sqlite3 database'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Internationalization
@@ -121,7 +136,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = '/var/www/html/blindshop/staticfiles'
 
 STATICFILES_DIRS = [
