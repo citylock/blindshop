@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import Http404
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -19,8 +20,33 @@ class ProductListView(ListView):
 
 		# can add more context values here, for example
 		context["now"] = timezone.now()
-		
+		context["query"] = timezone.now()
 		return context
+
+	def get_queryset(self, *args, **kwargs):
+		qs = super(ProductListView, self).get_queryset(*args, **kwargs)
+		query = self.request.GET.get("q")
+		if query: 
+			# standard query format.. for one item to search
+			# qs = self.model.objects.filter(title__icontains=query)
+
+			# search for text
+			qs = self.model.objects.filter(
+				Q(title__icontains=query) |
+				Q(description__icontains=query)
+				)
+
+			try: 
+				# search for decimal
+				qs2 = self.model.objects.filter(
+					Q(price=query)
+				)
+				qs = (qs|qs2).distinct()
+			except:
+				pass
+		return qs 
+
+
 
 class ProductDetailView(DetailView):
 	model = Product 
