@@ -9,10 +9,11 @@ from django.utils import timezone
 # Create your views here.
 
 from .forms import VariationInventoryFormSet
+from .mixins import StaffRequiredMixin
 from .models import Product, Variation
 
 
-class VariationListView(ListView):
+class VariationListView(StaffRequiredMixin, ListView):
 	model = Variation
 	
 	queryset = Variation.objects.all()
@@ -44,7 +45,7 @@ class VariationListView(ListView):
 				product = get_object_or_404(Product, pk=product_pk)
 				new_item.product = product
 				new_item.save()
-				
+
 			messages.success(request, "Your inventory and pricing have beeen updated")
 			return redirect("products")
 		raise Http404
