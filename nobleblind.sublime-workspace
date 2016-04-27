@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Va",
+				"VariationInventoryForm"
+			],
+			[
 				"D",
 				"DEBUG"
 			]
@@ -15,24 +19,17 @@
 			"file": "products/views.py",
 			"settings":
 			{
-				"buffer_size": 1142,
+				"buffer_size": 3212,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "products/urls.py",
+			"file": "products/forms.py",
 			"settings":
 			{
-				"buffer_size": 533,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "blindshop/urls.py",
-			"settings":
-			{
-				"buffer_size": 1511,
-				"line_ending": "Unix"
+				"buffer_size": 372,
+				"line_ending": "Unix",
+				"name": "forms"
 			}
 		},
 		{
@@ -44,10 +41,29 @@
 			}
 		},
 		{
-			"file": "products/models.py",
+			"file": "products/templates/products/variation_list.html",
 			"settings":
 			{
-				"buffer_size": 570,
+				"buffer_size": 647,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "from django.contrib.admin.views.decorators import staff_member_required\nfrom django.contrib.auth.decorators import login_required\nfrom django.utils.decorators import method_decorator\n\nfrom django.http import Http404\n\nclass StaffRequiredMixin(object):\n	@classmethod\n	def as_view(self, *args, **kwargs):\n		view = super(StaffRequiredMixin, self).as_view(*args, **kwargs)\n		return staff_member_required(view)\n\n	@method_decorator(login_required)\n	def dispatch(self, *args, **kwargs):\n		if request.user.is_staff:\n			return super(StaffRequiredMixin, self).dispatch(request, *args, **kwargs)\n		else: \n			raise Http404\n\nclass LoginRequiredMixin(object):\n	@classmethod\n	def as_view(self, *args, **kwargs):\n		view = super(LoginRequiredMixin, self).as_view(*args, **kwargs)\n		return login_required(view)\n\n	@method_decorator(login_required)\n	def dispatch(self, *args, **kwargs):\n		return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)\n\n",
+			"file": "products/mixins.py",
+			"file_size": 0,
+			"file_write_time": 131061642723897114,
+			"settings":
+			{
+				"buffer_size": 943,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "products/urls.py",
+			"settings":
+			{
+				"buffer_size": 640,
 				"line_ending": "Unix"
 			}
 		}
@@ -87,17 +103,23 @@
 		"/var/www/html/blindshop",
 		"/var/www/html/blindshop/blindshop",
 		"/var/www/html/blindshop/blindshop/settings",
-		"/var/www/html/blindshop/products",
+		"/var/www/html/blindshop/mediafiles",
+		"/var/www/html/blindshop/mediafiles/products",
 		"/var/www/html/blindshop/products/templates",
 		"/var/www/html/blindshop/static",
-		"/var/www/html/blindshop/static/css"
+		"/var/www/html/blindshop/static/css",
+		"/var/www/html/blindshop/templates"
 	],
 	"file_history":
 	[
-		"/var/www/html/blindshop/products/templates/products/product_detail.html",
-		"/var/www/html/blindshop/blindshop/urls.py",
-		"/var/www/html/blindshop/products/models.py",
 		"/var/www/html/blindshop/products/admin.py",
+		"/var/www/html/blindshop/products/templates/products/product_detail.html",
+		"/var/www/html/blindshop/products/models.py",
+		"/var/www/html/blindshop/products/templates/products/product_list.html",
+		"/var/www/html/blindshop/blindshop/urls.py",
+		"/var/www/html/blindshop/products/urls.py",
+		"/var/www/html/blindshop/templates/navbar.html",
+		"/var/www/html/blindshop/products/views.py",
 		"/var/www/html/blindshop/blindshop/settings/base.py",
 		"/var/www/html/blindshop/blindshop/settings/__init__.py",
 		"/var/www/html/blindshop/templates/500.html",
@@ -113,7 +135,6 @@
 		"/var/www/html/blindshop/newsletter/views.py",
 		"/var/www/html/blindshop/templates/head_css.html",
 		"/var/www/html/blindshop/templates/base.html",
-		"/var/www/html/blindshop/templates/navbar.html",
 		"/var/www/html/blindshop/blindshop/settings.py",
 		"/home/brian/ie10-viewport-bug-workaround.css",
 		"/home/brian/ie-emulation-modes-warning.js",
@@ -156,7 +177,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -165,19 +186,49 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1142,
+						"buffer_size": 3212,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								536,
-								536
+								1020,
+								1020
 							]
 						],
 						"settings":
 						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "products/forms.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 372,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								372,
+								372
+							]
+						],
+						"settings":
+						{
+							"auto_name": "forms",
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
@@ -188,57 +239,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "products/urls.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 533,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								533,
-								533
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "blindshop/urls.py",
-					"semi_transient": false,
+					"file": "products/templates/products/product_list.html",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1511,
+						"buffer_size": 353,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								849,
-								849
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -249,19 +268,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "products/templates/products/product_list.html",
+					"file": "products/templates/products/variation_list.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 353,
+						"buffer_size": 647,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								305,
-								305
+								535,
+								535
 							]
 						],
 						"settings":
@@ -273,24 +292,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "products/models.py",
+					"file": "products/mixins.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 570,
+						"buffer_size": 943,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								547,
-								547
+								583,
+								583
 							]
 						],
 						"settings":
@@ -301,7 +320,35 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "products/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								640,
+								640
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

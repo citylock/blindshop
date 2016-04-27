@@ -8,7 +8,7 @@ class VariationInventoryForm(forms.ModelForm):
 	class Meta:
 		model = Variation
 		fields = [
-			"title",
+			# "title",
 			"price", 
 			"sale_price", 
 			"inventory", 
