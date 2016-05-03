@@ -113,6 +113,7 @@ class ProductListView(ListView):
 		return qs 
 
 
+import random
 
 class ProductDetailView(DetailView):
 	model = Product 
@@ -121,7 +122,8 @@ class ProductDetailView(DetailView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
 		instance = self.get_object()
-		context["related"] = Product.objects.get_related(instance).order_by("?")[:4]
+		# order_by("-title")
+		context["related"] = sorted(Product.objects.get_related(instance)[:4], key= lambda x: random.random())
 		return context
 
 
