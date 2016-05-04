@@ -13,6 +13,17 @@
 .jumbotron {
 	background-color:#2C2F80;
 	color:#FFF;
+
+	{% if featured_image.make_image_background %}
+	background-image:url("{{ featured_image.image.url }}");
+	background-repeat: no-repeat;
+    background-color: black;
+    background-size: cover;
+    background-position-y: -107px;
+    {% if featured_image.text_css_color %}
+	    color: #{{ featured_image.text_css_color }}
+    {% endif %}
+	{% endif %}
 }
 
 {% endblock %}
@@ -22,40 +33,78 @@
 {% block jumbotron %}
 {% if not request.user.is_authenticated %}
 
-<div class="jumbotron">
-	<div class="container">
-	<div class="row">
-		<div class='col-sm-6'>
-		<h1>Best Blinds</h1>
-		<p>We believe we offer the best value blinds in Australia. We don't have sales consultants who try to upsell and over charge you for your blinds. All our prices are available online, eliminating the need for sales commissions. Join Us today.</p>
-		<p>
-		  <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
-		</p>
-		</div>
-		
-		<div class='col-sm-6'>
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/t4--_JeuLi8" frameborder="0" allowfullscreen></iframe>
-		
-		</div>
-	</div>
-	</div>
-</div>
+	{% if featured_image %}
 
+		<div class="jumbotron">
+			<div class="container">
+			<div class="row">
+				<div class='col-sm-12 text-center {% if featured_image.text_right %} pull-right {% endif %}'>
+				<h1>{{ featured_image.product.title }}</h1>
+				<p>{{ featured_image.product.description }}</p>
+				<p>
+				  <a class="btn btn-lg btn-primary" href="{{ featured_image.product.get_absolute_url }}" role="button">More Details</a>
+				</p>
+				</div>
+				
+				{% if not featured_image.make_image_background %}
+					<div class='col-sm-6'>
+						<img src="{{ featured_image.image.url }}" class='img-responsive' />				
+					</div>
+				{% endif %} 
+			</div>
+			</div>
+		</div>
+
+
+	{% else %}
+		<div class="jumbotron">
+			<div class="container">
+			<div class="row">
+				<div class='col-sm-6'>
+				<h1>Best Blinds</h1>
+				<p>We believe we offer the best value blinds in Australia. We don't have sales consultants who try to upsell and over charge you for your blinds. All our prices are available online, eliminating the need for sales commissions. Join Us today.</p>
+				<p>
+				  <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
+				</p>
+				</div>
+				
+				<div class='col-sm-6'>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/t4--_JeuLi8" frameborder="0" allowfullscreen></iframe>
+				
+				</div>
+			</div>
+			</div>
+		</div>
+
+	{% endif %}
 {% endif %}
 {% endblock %}
-
+  
 
 
 
 {% block content %}
 
-{% if request.user.is_authenticated %}
+<div class='row'>
+<h3>Recommended Products</h3>
+
+{% include "products/products.html" with object_list=products col_class_set="col-sm-2" %}
+
+</div>
+
+<div class='row'>
+<h3>Featured Products</h3>
+
+{% include "products/products.html" with object_list=products2 %}
+
+</div>
+<!-- {% if request.user.is_authenticated %}
 <h1>You are logged in!!!</h1>
 
 	{% if queryset %}
 	<h2>Welcome Staff</h2>
 	<table class='table'>
-	<!-- {{ queryset }} -->
+
 
 	{% for instance in queryset %}
 		<tr>
@@ -94,23 +143,19 @@
 
   <div class="col-md-3">
 	  <p class="lead text-align-center">Roller<br/>
-	  <!-- <i class="fa fa-bolt fa-spin fa-5x"></i></p> -->
+
 	  
 	  <img src="{% static 'img/blinds-roller-01.jpg' %}" class='img-responsive' />
   </div>
 
   <div class="col-md-3">
 		<p class="lead text-align-center">Roman<br/>
-<!-- 	  
-		<span class="fa-stack fa-lg fa-5x">
-		  <i class="fa fa-circle-o-notch fa-stack-2x fa-spin"></i>
-		  <i class="fa fa-github fa-stack-1x"></i>
-		</span>
- -->	  
  		<img src="{% static 'img/blinds-roman-01.jpg' %}" class='img-responsive' />
   </div>
 
 
 </div>
 {% endif %}
+-->
+
 {% endblock %}

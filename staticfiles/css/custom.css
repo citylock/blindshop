@@ -6,3 +6,14 @@
 	color:red;
 	text-decoration:line-through;
 }
+
+.fa-navbar-cart {
+	font-size: 19px;
+    vertical-align: middle;
+
+}
+
+.fa-navbar-badge {
+	vertical-align: 0;
+    background-color: green;
+}
