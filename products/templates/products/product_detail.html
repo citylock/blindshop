@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 <script>
 {% block jquery %}
 
@@ -24,6 +23,18 @@ $(".variation_select").change(function(){
 
 })
 
+
+function showFlashMessage(message){
+		var template = "{% include 'alert.html' with message='" + message + "' %}"
+		console.log(template)
+		$("body").append(template);
+		$(".container-alert-flash").fadeIn();
+		setTimeout(function(){
+			$(".container-alert-flash").fadeOut();
+		}, 2000)
+} // End of showFlashMessage
+
+
 $("#submit-btn").click(function(event){
 	event.preventDefault()
 	var formData = $("#add-form").serialize()
@@ -33,8 +44,12 @@ $("#submit-btn").click(function(event){
 		url: "{% url 'cart' %}", 
 		data: formData, 
 		success: function(data) {
-			console.log(data)
 			$("#jquery-message").text("Added "+data.item_added + " Deleted " + data.deleted )
+			showFlashMessage("Product Added");
+
+	
+
+
 		}, 
 		error: function(response,error) {
 			// console.log(response)
@@ -57,6 +72,9 @@ $("#submit-btn").click(function(event){
 
 
 {% block content %}
+
+
+
 
 <div class='row'>
 
