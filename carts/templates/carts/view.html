@@ -22,12 +22,27 @@ $(".item-qty").change(function(){
 			$("#jquery-message").text("Added "+data.item_added + " Deleted " + data.deleted)
 			if (data.deleted) {
 				$("#item-"+item).fadeOut();
+				$("#subtotal").text("Subtotal: " + data.subtotal);
 			} else {
 				$("#item-line-total-"+item).text(data.line_total);	
-				$("#subtotal").text(data.subtotal);
+				$("#subtotal").text("Subtotal: " + data.subtotal);
 			}
 
-			showFlashMessage("Cart updated");
+			if (data.total_items == 0) {
+				$(".table").fadeOut()
+				$(".main-content").text("Cart is empty")
+			}
+
+			var message = ""
+			if (data.item_added) {
+				message = "NEW item added"
+			} else if (data.deleted) {
+				message = "Item removed"
+			} else {
+				message = "Item updated"
+			}
+
+			showFlashMessage(message);
 		}, 
 		error: function(response,error) {
 			// console.log(response)
@@ -44,6 +59,13 @@ $(".item-qty").change(function(){
 </script>
 
 {% block content %}
+
+<div class='row main-content'>
+{% if object.cartitem_set.count < 1 %}
+
+{$ include "carts/empty_cart.html" %}
+
+{% else %} 
 
 <table class='table'>
 {% for item in object.cartitem_set.all %}
@@ -73,5 +95,7 @@ $(".item-qty").change(function(){
 </tr>
 
 </table>
+{% endif %}
+</div>
 {% endblock %} 
   

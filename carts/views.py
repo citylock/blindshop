@@ -35,6 +35,7 @@ class CartView(View):
 
 		item_id = request.GET.get("item") 
 		delete_item = request.GET.get("delete", False)
+		flash_message = ""
 		item_added = False 
 
 		if item_id: 
@@ -50,11 +51,15 @@ class CartView(View):
 			
 			if created:
 				item_added = True
+				flash_message = "Successfully added to the cart."
 			if delete_item:
+				flash_message = "Item removed successfully."
 				cart_item.delete()  
-			else: 
-				cart_item.quantity = qty
-				cart_item.save() 
+			else:
+				if not created:
+					flash_message = "Quantity has been updated successfully."
+					cart_item.quantity = qty
+					cart_item.save() 
 
 			if not request.is_ajax():
 				return HttpResponseRedirect(reverse("cart"))
@@ -71,11 +76,18 @@ class CartView(View):
 			except:
 				subtotal = None
 
+			try: 
+				total_items = cart_item.cart.items.count()
+			except:
+				total_items = 0
+
 			data = {
 				"deleted": delete_item, 
 				"item_added":item_added, 
 				"line_total": total,
 				"subtotal": subtotal,
+				"flash_message": flash_message,
+				"total_items": total_items,
 			}
 			return JsonResponse(data)
 

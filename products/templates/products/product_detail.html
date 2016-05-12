@@ -25,7 +25,7 @@ $(".variation_select").change(function(){
 
 
 
-
+// ajax add to cart
 
 $("#submit-btn").click(function(event){
 	event.preventDefault()
@@ -36,8 +36,8 @@ $("#submit-btn").click(function(event){
 		url: "{% url 'cart' %}", 
 		data: formData, 
 		success: function(data) {
-			$("#jquery-message").text("Added "+data.item_added + " Deleted " + data.deleted )
-			showFlashMessage("Product Added");
+			// $("#jquery-message").text("Added "+data.item_added + " Deleted " + data.deleted )
+			showFlashMessage(data.flash_message);
 
 	
 
