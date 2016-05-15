@@ -30,7 +30,8 @@ $(".item-qty").change(function(){
 
 			if (data.total_items == 0) {
 				$(".table").fadeOut()
-				$(".main-content").text("Cart is empty")
+				var template = "{% include 'carts/empty_cart.html' %}";
+				$(".main-content").html(template)
 			}
 
 			var message = ""
@@ -61,10 +62,10 @@ $(".item-qty").change(function(){
 {% block content %}
 
 <div class='row main-content'>
-{% if object.cartitem_set.count < 1 %}
+{% if object.cartitem_set.count  < 1 %}
 
-{$ include "carts/empty_cart.html" %}
-
+{% include "carts/empty_cart.html" %}
+  
 {% else %} 
 
 <table class='table'>
