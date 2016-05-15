@@ -23,7 +23,15 @@ $(".variation_select").change(function(){
 
 })
 
-
+function showFlashMessage(message){
+		var template = "{% include 'alert.html' with message='" + message + "' %}"
+		console.log(template)
+		$("body").append(template);
+		$(".container-alert-flash").fadeIn();
+		setTimeout(function(){
+			$(".container-alert-flash").fadeOut();
+		}, 2000)
+} // End of showFlashMessage
 
 // ajax add to cart
 
@@ -39,7 +47,7 @@ $("#submit-btn").click(function(event){
 			// $("#jquery-message").text("Added "+data.item_added + " Deleted " + data.deleted )
 			showFlashMessage(data.flash_message);
 
-	
+	 
 
 
 		}, 
