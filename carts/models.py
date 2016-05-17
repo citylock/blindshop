@@ -34,7 +34,7 @@ def cart_item_post_save_receiver(sender, instance, *args, **kwargs):
 
 post_save.connect(cart_item_post_save_receiver, sender=CartItem)
 
-post_delete.connect(cart_item_post_save_receiver, sender=CartItem)
+post_delete.connect(cart_item_post_save_receiver, sender=CartItem) 
 
 class Cart(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
@@ -42,6 +42,12 @@ class Cart(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 	subtotal = models.DecimalField(max_digits=50, decimal_places=2,default=0.0)
+	tax_percentage = models.DecimalField(max_digits=10, decimal_places=5,default=0.085)
+	tax_total = models.DecimalField(max_digits=50, decimal_places=2,default=0.0)
+	total = models.DecimalField(max_digits=50, decimal_places=2,default=0.0)
+
+	# discount
+	# shipping 
 
 	def __unicode__(self):
 		return str(self.id)
@@ -51,15 +57,18 @@ class Cart(models.Model):
 		items = self.cartitem_set.all()
 		for item in items:
 			subtotal += item.line_item_total
-		self.subtotal = subtotal
+		self.subtotal = "%.2f" % (subtotal)
 		self.save()
-	# timestamp ** created
-	# updated ** updated
 
-	# subtotal price 
-	# taxes total
-	# discounts
-	# total price
  
+def do_tax_and_total_receiver(sender, instance, *args, **kwargs):
+	subtotal = Decimal(instance.subtotal)
+	tax_total = round(subtotal * Decimal(instance.tax_percentage),2)    # tax rate : 8.5%
+	print instance.tax_percentage
+	total = round(subtotal + Decimal(tax_total),2)
+	instance.tax_total = "%.2f" % (tax_total)
+	instance.total = "%.2f" % (total)
+	#instance.save()
 
+pre_save.connect(do_tax_and_total_receiver, sender=Cart)
  
