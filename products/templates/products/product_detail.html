@@ -28,8 +28,8 @@ $(".variation_select").change(function(){
 
 $("#submit-btn").click(function(event){
 	event.preventDefault()
-	var formData = $("#add-form").serialize()
-	console.log(formData)
+	var formData = $("#add-form").serialize();
+	console.log(formData);
 	$.ajax({
 		type: "GET", // "POST"
 		url: "{% url 'cart' %}", 

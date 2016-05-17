@@ -1,5 +1,4 @@
 function showFlashMessage(message) {
-	// var template = "{% include 'alert.html' with message='" + message + "' %}"
 	var template = "<div class='container container-alert-flash'>" + 
 	"<div class='col-sm-3 col-sm-offset-8'> " + 
 	"<div class='alert alert-success alert-dismissible' role='alert'>" + 

@@ -30,7 +30,7 @@ $(".item-qty").change(function(){
 
 			if (data.total_items == 0) {
 				$(".table").fadeOut()
-				var template = "{% include 'carts/empty_cart.html' %}";
+				var template = '{% include "carts/empty_cart.html" %}';
 				$(".main-content").html(template)
 			}
 

@@ -34,6 +34,7 @@ class CartView(View):
 		cart = self.get_object()
 
 		item_id = request.GET.get("item") 
+		
 		delete_item = request.GET.get("delete", False)
 		flash_message = ""
 		item_added = False 
