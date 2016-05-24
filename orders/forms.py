@@ -19,3 +19,9 @@ class GuestCheckoutForm(forms.Form):
 			return email2
 		else:
 			raise forms.ValidationError("Please confirm emails are the same")
+
+
+class AddressForm(forms.Form):
+	billing_address = forms.CharField()
+	shipping_address = forms.CharField()
+
