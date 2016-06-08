@@ -3,9 +3,9 @@ from django.db import models
 
 # Create your models here.
 
-class GuestCheckout(models.Model):
+class UserCheckout(models.Model):
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True)   # optional 
-	email = models.EmailField()  	# --> required
+	email = models.EmailField(unique=True)  	# --> required
 	#merchant_id
 
 	def __unicode__(self): # def __str__(self):
