@@ -8,8 +8,25 @@ class UserCheckout(models.Model):
 	email = models.EmailField(unique=True)  	# --> required
 	#merchant_id
 
-	def __unicode__(self): # def __str__(self):
+	def __unicode__(self): # def __str__(self): 
 		return self.email
+
+ADDRESS_TYPE = (
+	('billing','Billing'),
+	('shipping','Shipping'),
+)
+
+
+class UserAddress(models.Model): 
+	user = models.ForeignKey(UserCheckout)
+	type = models.CharField(max_length=120,choices=ADDRESS_TYPE)
+	street = models.CharField(max_length=120)
+	city = models.CharField(max_length=120)
+	state = models.CharField(max_length=120)
+	zipcode = models.CharField(max_length=120)
+
+	def __unicode__(self):
+		return self.street
 
 
 # class Order(models.Model):
