@@ -67,7 +67,7 @@
 			"file": "carts/views.py",
 			"settings":
 			{
-				"buffer_size": 4875,
+				"buffer_size": 5143,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "orders/admin.py",
 			"settings":
 			{
-				"buffer_size": 131,
+				"buffer_size": 177,
 				"line_ending": "Unix"
 			}
 		},
@@ -91,15 +91,23 @@
 			"file": "orders/models.py",
 			"settings":
 			{
-				"buffer_size": 590,
+				"buffer_size": 1015,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "orders/forms.py",
+			"file": "orders/views.py",
 			"settings":
 			{
-				"buffer_size": 1044,
+				"buffer_size": 63,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "newsletter/forms.py",
+			"settings":
+			{
+				"buffer_size": 880,
 				"line_ending": "Unix"
 			}
 		}
@@ -144,7 +152,7 @@
 		"/var/www/html/blindshop/carts/templates/carts",
 		"/var/www/html/blindshop/mediafiles",
 		"/var/www/html/blindshop/newsletter",
-		"/var/www/html/blindshop/orders/migrations",
+		"/var/www/html/blindshop/orders",
 		"/var/www/html/blindshop/products",
 		"/var/www/html/blindshop/products/migrations",
 		"/var/www/html/blindshop/products/templates",
@@ -156,17 +164,16 @@
 		"/var/www/html/blindshop/staticfiles/css",
 		"/var/www/html/blindshop/staticfiles/js",
 		"/var/www/html/blindshop/templates",
-		"/var/www/html/blindshop/templates/registration",
-		"/var/www/html/blindshop/mediafiles"
+		"/var/www/html/blindshop/templates/registration"
 	],
 	"file_history":
 	[
+		"/var/www/html/blindshop/orders/forms.py",
 		"/var/www/html/blindshop/carts/views.py",
 		"/var/www/html/blindshop/blindshop/urls.py",
 		"/var/www/html/blindshop/carts/templates/carts/checkout_view.html",
 		"/var/www/html/blindshop/orders/models.py",
 		"/var/www/html/blindshop/blindshop/settings/base.py",
-		"/var/www/html/blindshop/orders/forms.py",
 		"/var/www/html/blindshop/orders/views.py",
 		"/var/www/html/blindshop/orders/admin.py",
 		"/var/www/html/blindshop/orders/templates/orders/address_select.html",
@@ -264,15 +271,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4875,
+						"buffer_size": 5143,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4296,
-								4296
+								4234,
+								4234
 							]
 						],
 						"settings":
@@ -312,7 +319,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -321,15 +328,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 131,
+						"buffer_size": 177,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								131,
-								131
+								177,
+								177
 							]
 						],
 						"settings":
@@ -349,15 +356,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 590,
+						"buffer_size": 1015,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								109,
-								109
+								372,
+								372
 							]
 						],
 						"settings":
@@ -373,31 +380,60 @@
 				},
 				{
 					"buffer": 4,
-					"file": "orders/forms.py",
+					"file": "orders/views.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1044,
+						"buffer_size": 63,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1044,
-								1044
+								63,
+								63
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "newsletter/forms.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 880,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
